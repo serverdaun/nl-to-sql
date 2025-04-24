@@ -6,7 +6,7 @@ import chromadb
 from typing import List, Tuple
 from langchain_huggingface import HuggingFaceEmbeddings
 from smolagents import CodeAgent, InferenceClientModel, tool, HfApiModel
-from utils.config import DB_PATH, DDL_AND_DATA, CHROMA_DIR, SCHEMA_JSON, HF_API_KEY
+from config.config import DB_PATH, DDL_AND_DATA, CHROMA_DIR, SCHEMA_JSON, HF_API_KEY
 
 
 embedding_model = HuggingFaceEmbeddings(model_name="sentence-transformers/paraphrase-MiniLM-L6-v2")

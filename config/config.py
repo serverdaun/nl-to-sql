@@ -5,7 +5,7 @@ import json
 load_dotenv()
 
 DB_PATH = "db/ecommerce.db"
-SCHEMA_JSON_PATH = "utils/schema.json"
+SCHEMA_JSON_PATH = "config/schema.json"
 CHROMA_DIR = "chroma_store"
 EMBEDDING_MODEL = "sentence-transformers/paraphrase-MiniLM-L6-v2"
 HF_API_KEY = os.getenv("HF_API_KEY")
