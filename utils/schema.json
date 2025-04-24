@@ -1,0 +1,58 @@
+[
+    {
+      "table": "customers",
+      "description": "Customer master data",
+      "columns": [
+        {"name": "customer_id", "description": "Unique numeric ID for each customer"},
+        {"name": "first_name",  "description": "Customer first name"},
+        {"name": "last_name",   "description": "Customer last name"},
+        {"name": "email",       "description": "E-mail address"},
+        {"name": "city",        "description": "Home city"},
+        {"name": "signup_date", "description": "Date the customer registered"}
+      ]
+    },
+    {
+      "table": "products",
+      "description": "Product catalog",
+      "columns": [
+        {"name": "product_id", "description": "SKU / unique product ID"},
+        {"name": "name",       "description": "Product display name"},
+        {"name": "category",   "description": "Product category"},
+        {"name": "unit_price", "description": "List price per unit"},
+        {"name": "currency",   "description": "ISO currency of the price"}
+      ]
+    },
+    {
+      "table": "orders",
+      "description": "Sales order header",
+      "columns": [
+        {"name": "order_id",     "description": "Unique sales order number"},
+        {"name": "customer_id",  "description": "Who placed the order"},
+        {"name": "order_date",   "description": "Order creation date"},
+        {"name": "status",       "description": "Lifecycle status"},
+        {"name": "total_amount", "description": "Grand total for the order"},
+        {"name": "currency",     "description": "Currency of the total"}
+      ]
+    },
+    {
+      "table": "order_items",
+      "description": "Sales order line items",
+      "columns": [
+        {"name": "order_id",  "description": "Header this line belongs to"},
+        {"name": "product_id","description": "Which product is sold"},
+        {"name": "quantity",  "description": "Quantity ordered"},
+        {"name": "unit_price","description": "Agreed price per unit"},
+        {"name": "line_total","description": "Extended price qty * unit"}
+      ]
+    },
+    {
+      "table": "inventory",
+      "description": "Current stock snapshot per product & warehouse",
+      "columns": [
+        {"name": "product_id",         "description": "Product SKU"},
+        {"name": "warehouse",          "description": "Warehouse code"},
+        {"name": "quantity_available", "description": "Units in stock"},
+        {"name": "last_updated",       "description": "Snapshot date"}
+      ]
+    }
+  ]
