@@ -7,7 +7,7 @@
         {"name": "first_name",  "description": "Customer first name"},
         {"name": "last_name",   "description": "Customer last name"},
         {"name": "email",       "description": "E-mail address"},
-        {"name": "city",        "description": "Home city"},
+        {"name": "city",        "description": "Customer city"},
         {"name": "signup_date", "description": "Date the customer registered"}
       ]
     },

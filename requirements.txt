@@ -1,0 +1,7 @@
+langchain
+langchain_community
+langchain-huggingface
+smolagents
+chromadb
+python-dotenv
+sentence-transformers
