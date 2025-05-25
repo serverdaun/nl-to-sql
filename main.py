@@ -29,19 +29,27 @@ def build_index():
         return chroma_client.get_collection("ecom_meta")
      
     coll = chroma_client.create_collection("ecom_meta")
-    for tbl in SCHEMA_JSON:
-        tbl_doc = f"TABLE {tbl['name']}: {tbl['description']}"
-        coll.add(ids=[tbl["name"]],
-                  documents=[tbl_doc],
-                  metadatas=[{"level": "table", "table": tbl["table"]}],
-                  embeddings=[embedding_model.embed_documents([tbl_doc])[0]])
     
+    # Add table-level entries
+    for tbl in SCHEMA_JSON:
+        tbl_doc = f"TABLE {tbl['table']}: {tbl['description']}"
+        coll.add(
+            ids=[tbl["table"]],
+            documents=[tbl_doc],
+            metadatas=[{"level": "table", "table": tbl["table"]}],
+            embeddings=[embedding_model.embed_documents([tbl_doc])[0]]
+        )
+        
+        # Add column-level entries
         for col in tbl["columns"]:
             col_doc = f"{tbl['table']}.{col['name']} — {col['description']}"
-            coll.add(ids=[f"{tbl['table']}.{col['name']}"], documents=[col_doc],
-                     metadatas=[{"level":"column","table":tbl['table'],"column":col['name']}],
-                     embeddings=[embedding_model.embed_documents([col_doc])[0]])
-            
+            coll.add(
+                ids=[f"{tbl['table']}.{col['name']}"],
+                documents=[col_doc],
+                metadatas=[{"level": "column", "table": tbl["table"], "column": col["name"]}],
+                embeddings=[embedding_model.embed_documents([col_doc])[0]]
+            )
+    
     rich.print("[green]Chroma vector index built.[/]")
     return coll
 
